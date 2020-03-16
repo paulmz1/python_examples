@@ -1,7 +1,6 @@
 from tsp.solvers.tsp_brute_force import solve as solve_brute_force
 from tsp.solvers.tsp_held_karp import solve as solve_held_karp
 from tsp.graphics.graph_plot import plot
-solvers = (solve_brute_force, solve_held_karp)
 
 graph1 = [
     [0, 2, 9, 10],
@@ -17,10 +16,22 @@ graph2 = [
     [6, 3, 20, 0, 11],
     [6, 3, 12, 19, 0]
 ]
-solver = solvers[1]
-solution = solver(graph2, lambda g, j, k: g[j][k])
+
+graph3 = [
+    [0, 49, 34, 96, 74],
+    [49,  0, 10, 94, 43],
+    [34, 10,  0, 21,  6],
+    [96, 94, 21,  0, 70],
+    [74, 43,  6, 70,  0]
+]
+
+# Set graphs and solver
+solver = solve_held_karp # = solve_held_karp or solve_brute_force
+graph = graph1 # = graph1, graph2 or graph3
+
+solution = solver(graph, lambda g, j, k: g[j][k])
 print(solution)
-plot(graph2, solution)
+plot(graph, solution)
 
 
 
