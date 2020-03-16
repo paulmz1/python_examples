@@ -3,6 +3,9 @@
 google_ortools/tube_stations.py - Uses Google's [ortools lib](https://developers.google.com/optimization/routing/tsp) to solve the shortest path between
  London Underground train stations from [Openstreetmap](https://wiki.openstreetmap.org/wiki/List_of_London_Underground_stations).
  The results are plotted onto a map of London using [Plotly](https://plot.ly/python/lines-on-mapbox/#lines-on-mapbox-maps-using-plotly-express).
+
+![Tube Stations](images/tube_stations.png)
+
  
 dash/traveling_salesman.py - Using [Dash](https://dash.plot.ly/) for the realtime visualisation of the Traveling Salesman Problem being solved using brute force.
 
