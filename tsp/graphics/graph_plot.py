@@ -36,3 +36,5 @@ def plot(graph, solution, start=0):
     plt.axis('off')
     fig.text(.05, .02, f'Distance={solution[0]}, Route={solution[1]}', ha='left')
     plt.show()
+
+# https://stackoverflow.com/questions/22785849/drawing-multiple-edges-between-two-nodes-with-networkx/60678428#60678428
