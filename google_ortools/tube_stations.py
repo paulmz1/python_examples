@@ -22,7 +22,7 @@ def main():
 
     stations = pd.read_csv("../data/tube_stations.csv")
     print(stations)
-
+    print("This takes a few minutes to run. Calculating...")
     manager = pywrapcp.RoutingIndexManager(len(stations), 1, 0)
     routing = pywrapcp.RoutingModel(manager)
     cache = {}
