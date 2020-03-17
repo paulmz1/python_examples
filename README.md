@@ -19,8 +19,20 @@ tsp/traveling_salesman.py - Visualisation using [Networkx](https://networkx.gith
  
 ![NetworkX Held Karp](https://github.com/paulmz1/python_examples/blob/master/images/held_karp_networkx.png)
 
+### Notes
+Tested on Python 3.7 64 bit. At the time of testing, ORTools wasn't available for some versions of Python 3 or 32 bit versions. 
 
+#### Dependencies
+ortools
+dash
+networkx
+numpy
+plotly
+matplotlib
+pandas
+geopy
  
 Requirements.txt generated with> pipreqs --force
+
 
 
