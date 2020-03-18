@@ -7,6 +7,7 @@ import plotly.express as px
 from geopy.distance import geodesic
 from ortools.constraint_solver import routing_enums_pb2
 from ortools.constraint_solver import pywrapcp
+import functools
 
 
 def get_route(manager, routing, solution):
@@ -25,17 +26,12 @@ def main():
     print("This takes a few minutes to run. Calculating...")
     manager = pywrapcp.RoutingIndexManager(len(stations), 1, 0)
     routing = pywrapcp.RoutingModel(manager)
-    cache = {}
 
+    @functools.lru_cache(maxsize=None)
     def distance_callback(from_index, to_index):
-        dist = cache.get((from_index, to_index), None)
-        if dist:
-            return dist
         frm = stations.iloc[manager.IndexToNode(from_index)]
         to = stations.iloc[manager.IndexToNode(to_index)]
-        dist = geodesic((frm["Latitude"], frm["Longitude"]), (to["Latitude"], to["Longitude"])).meters
-        cache[(from_index, to_index)] = dist
-        return dist
+        return geodesic((frm["Latitude"], frm["Longitude"]), (to["Latitude"], to["Longitude"])).meters
 
     transit_callback_index = routing.RegisterTransitCallback(distance_callback)
 
@@ -51,6 +47,7 @@ def main():
     solution = routing.SolveWithParameters(search_parameters)
 
     if solution:
+        print(distance_callback.cache_info())
         route, distance = get_route(manager, routing, solution)
         print(f'Distance = {distance}')
         routed_stations = stations.iloc[route, :]
