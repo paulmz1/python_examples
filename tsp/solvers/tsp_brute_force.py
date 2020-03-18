@@ -26,9 +26,10 @@ def solve_itr(graph, distance_function=default_distance):
 
         if shortest_dist is None or dist < shortest_dist:
             shortest_dist = dist
+            print(dist, end =" ")
             yield shortest_dist, list(route)
 
 
 def solve(points, distance_function):
-    *_, last = solve_itr(points, distance_function)
-    return last
+    *_, (d,r) = solve_itr(points, distance_function)
+    return d, r, 'Brute Force'

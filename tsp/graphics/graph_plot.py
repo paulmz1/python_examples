@@ -34,7 +34,7 @@ def plot(graph, solution, start=0):
     edge_labels = get_edge_labels(G, solution, pos)
     nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_color='red')
     plt.axis('off')
-    fig.text(.05, .02, f'Distance={solution[0]}, Route={solution[1]}', ha='left')
+    fig.text(.05, .02, f'Distance={solution[0]}, Route={solution[1]}, Algo = {solution[2]}, Time = {solution[3]:.6f}', ha='left')
     plt.show()
 
 # https://stackoverflow.com/questions/22785849/drawing-multiple-edges-between-two-nodes-with-networkx/60678428#60678428
