@@ -1,5 +1,5 @@
 ortools==7.5.7466
-dash_core_components==1.8.1
+dash_core_components==2.0.0
 networkx==2.4
 numpy==1.18.1
 dash_html_components==1.0.2
